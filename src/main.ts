@@ -10,9 +10,7 @@ navLinksElements.forEach((link) => {
     event.preventDefault();
     const targetPath = (event.target as HTMLAnchorElement).getAttribute("href");
     console.log("🚀 ~ link.addEventListener ~ targetPath:", targetPath);
-    if (targetPath) {
-      history.pushState({}, "", targetPath);
-    }
+    history.pushState({}, "", targetPath);
   });
 });
 
