@@ -15,14 +15,17 @@ navLinksElements.forEach((link) => {
   });
 });
 
-function updateAppContent() {
+async function updateAppContent() {
   const currentPath = window.location.pathname;
+  let content = "";
   console.log("🚀 ~ currentPath:", currentPath);
   if (currentPath === "/") {
-    appEl!.innerHTML = homePage();
+    content = await homePage();
   } else if (currentPath === "/contact") {
-    appEl!.innerHTML = contactPage();
+    content = await contactPage();
   } else {
-    appEl!.innerHTML = notFoundPage();
+    content = await notFoundPage();
   }
+
+  appEl!.innerHTML = content;
 }
