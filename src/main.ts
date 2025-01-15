@@ -1,6 +1,3 @@
-const currentPath = window.location.pathname;
-console.log("🚀 ~ currentPath:", currentPath);
-
 const appEl = document.querySelector<HTMLDivElement>("#app");
 
 const navLinksElements = document.querySelectorAll("a");
@@ -11,17 +8,26 @@ navLinksElements.forEach((link) => {
     const targetPath = (event.target as HTMLAnchorElement).getAttribute("href");
     console.log("🚀 ~ link.addEventListener ~ targetPath:", targetPath);
     history.pushState({}, "", targetPath);
+    updateAppContent();
   });
 });
 
-// const h1El = document.createElement("h1");
-
-// if (currentPath === "/") {
-//   h1El.textContent = "Home";
-// } else if (currentPath === "/contact") {
-//   h1El.textContent = "Contact";
-// } else {
-//   h1El.textContent = "Not found!";
-// }
-
-// appEl?.appendChild(h1El);
+function updateAppContent() {
+  const currentPath = window.location.pathname;
+  console.log("🚀 ~ currentPath:", currentPath);
+  if (currentPath === "/") {
+    appEl!.innerHTML = `
+  <h1>Home</h1>
+  <div><p>Das ist die home page, welcome"</p></div>
+  `;
+  } else if (currentPath === "/contact") {
+    appEl!.innerHTML = `
+  <h1>Contact</h1>
+  <div><p>Das ist die contact page, welcome"</p></div>
+  `;
+  } else {
+    appEl!.innerHTML = `
+  <h1>Not found!</h1>
+  `;
+  }
+}
