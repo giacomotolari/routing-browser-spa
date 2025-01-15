@@ -6,9 +6,10 @@ const appEl = document.querySelector<HTMLDivElement>("#app");
 
 const navLinksElements = document.querySelectorAll("a");
 
-navLinksElements.forEach((link) => {
+
+navLinksElements.forEach((link) => { 
   link.addEventListener("click", (event) => {
-    event.preventDefault();
+    event.preventDefault(); // wir brauchen es um zu verhindern, dass der Browser die Seite neu lädt
     const targetPath = (event.target as HTMLAnchorElement).getAttribute("href");
     history.pushState({}, "", targetPath);
     updateAppContent();
