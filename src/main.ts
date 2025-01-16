@@ -6,8 +6,7 @@ const appEl = document.querySelector<HTMLDivElement>("#app");
 
 const navLinksElements = document.querySelectorAll("a");
 
-
-navLinksElements.forEach((link) => { 
+navLinksElements.forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault(); // wir brauchen es um zu verhindern, dass der Browser die Seite neu lädt
     const targetPath = (event.target as HTMLAnchorElement).getAttribute("href");
@@ -30,3 +29,5 @@ async function updateAppContent() {
 
   appEl!.innerHTML = content;
 }
+
+window.addEventListener("load", updateAppContent);
