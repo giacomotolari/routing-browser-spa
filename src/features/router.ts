@@ -24,8 +24,8 @@ async function updateAppContent(appEl: HTMLDivElement) {
  * @param appEl - The HTMLDivElement that represents the main application element.
  */
 function initRouter(appEl: HTMLDivElement) {
-  window.addEventListener("load", async () => {
-    await updateAppContent(appEl!);
+  window.addEventListener("load", () => {
+    updateAppContent(appEl!);
   });
 }
 
