@@ -1,6 +1,7 @@
 import homePage from "../pages/home";
 import contactPage from "../pages/contant";
 import notFoundPage from "../pages/notFound";
+import aboutPage from "../pages/about";
 
 async function updateAppContent(appEl: HTMLDivElement) {
   const currentPath = window.location.pathname;
@@ -10,6 +11,8 @@ async function updateAppContent(appEl: HTMLDivElement) {
     content = await homePage();
   } else if (currentPath === "/contact") {
     content = await contactPage();
+  } else if (currentPath === "/about") {
+    content = await aboutPage();
   } else {
     content = await notFoundPage();
   }
