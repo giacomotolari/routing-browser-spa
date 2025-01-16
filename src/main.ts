@@ -1,10 +1,7 @@
 import { navigation } from "./features/navigation";
-import { updateAppContent } from "./features/router";
+import { initRouter } from "./features/router";
 
 const appEl = document.querySelector<HTMLDivElement>("#app");
 
+initRouter(appEl!);
 navigation(appEl!);
-
-window.addEventListener("load", async () => {
-  await updateAppContent(appEl!);
-});

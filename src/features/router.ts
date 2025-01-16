@@ -17,4 +17,16 @@ async function updateAppContent(appEl: HTMLDivElement) {
   appEl!.innerHTML = content;
 }
 
-export { updateAppContent };
+/**
+ * Initializes the router by setting up an event listener for the window's load event.
+ * When the window loads, it updates the application content.
+ *
+ * @param appEl - The HTMLDivElement that represents the main application element.
+ */
+function initRouter(appEl: HTMLDivElement) {
+  window.addEventListener("load", async () => {
+    await updateAppContent(appEl!);
+  });
+}
+
+export { updateAppContent, initRouter };
