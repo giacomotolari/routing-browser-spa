@@ -1,5 +1,5 @@
-import { navigation } from "./features/navigation";
-import { initRouter } from "./features/router";
+import { navigation } from "./features/navigation/navigation";
+import { initRouter } from "./features/navigation/router";
 
 const appEl = document.querySelector<HTMLDivElement>("#app");
 

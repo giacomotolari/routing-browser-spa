@@ -1,21 +1,21 @@
-import homePage from "../pages/home";
-import contactPage from "../pages/contant";
-import notFoundPage from "../pages/notFound";
-import aboutPage from "../pages/about";
+import { routes } from "./routes";
 
 async function updateAppContent(appEl: HTMLDivElement) {
   const currentPath = window.location.pathname;
   let content = "";
-  console.log("🚀 ~ currentPath:", currentPath);
-  if (currentPath === "/") {
-    content = await homePage();
-  } else if (currentPath === "/contact") {
-    content = await contactPage();
-  } else if (currentPath === "/about") {
-    content = await aboutPage();
-  } else {
-    content = await notFoundPage();
-  }
+  const route =
+    routes.find((route) => route.path === currentPath) ||
+    routes.find((route) => route.path === "*");
+  content = await route!.page();
+  //   if (currentPath === "/") {
+  //     content = await homePage();
+  //   } else if (currentPath === "/contact") {
+  //     content = await contactPage();
+  //   } else if (currentPath === "/about") {
+  //     content = await aboutPage();
+  //   } else {
+  //     content = await notFoundPage();
+  //   }
 
   appEl!.innerHTML = content;
 }
