@@ -43,12 +43,14 @@ async function EventsPage() {
   const eventsHtml = events
     .map(
       (event) => `
-        <div class="event" style="border: 1px solid black; padding: 10px; margin: 10px;">
-            <h2>${event.title}</h2>
-            <p>Date: ${event.date}</p>
-            <p>${event.description}</p>
-            <p>Price: $${event.price}</p>
-        </div>
+        <a href="/events/${event.id}" style="text-decoration: none; color: black;">
+            <div class="event" style="border: 1px solid black; padding: 10px; margin: 10px;">
+                <h2>${event.title}</h2>
+                <p>Date: ${event.date}</p>
+                <p>${event.description}</p>
+                <p>Price: $${event.price}</p>
+            </div>
+        </a>
     `
     )
     .join("");
