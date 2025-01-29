@@ -3,6 +3,7 @@ import contactPage from "../../pages/contant";
 import notFoundPage from "../../pages/notFound";
 import aboutPage from "../../pages/about";
 import EventsPage from "../../pages/events";
+import EventPage from "../../pages/event";
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
   {
     path: "/events",
     page: EventsPage,
+  },
+  {
+    path: "/events/1",
+    page: EventPage,
   },
   {
     path: "*",
