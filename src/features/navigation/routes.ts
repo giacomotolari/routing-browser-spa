@@ -19,11 +19,11 @@ const routes = [
     page: aboutPage,
   },
   {
-    path: "/events",
+    path: "/events/",
     page: EventsPage,
   },
   {
-    path: "/events/1",
+    path: "/events/:id",
     page: EventPage,
   },
   {

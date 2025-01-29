@@ -5,6 +5,7 @@ function EventPage() {
   const pathnameToArr = pathname.split("/");
   const eventID = Number(pathnameToArr[pathnameToArr.length - 1]);
   const event = events.find((event) => event.id === eventID);
+  console.log('event:',event);
 
   if (!event) {
     return `<div class="event" style="border: 1px solid black; padding: 10px; margin: 10px;">

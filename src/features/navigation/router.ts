@@ -26,9 +26,30 @@ async function updateAppContent(appEl: HTMLDivElement) {
    * @param currentPath - The current path to match against the routes.
    * @returns The matched route object or the wildcard route object if no match is found.
    */
-  const route =
-    routes.find((route) => route.path === currentPath) ||
-    routes.find((route) => route.path === "*");
+  // Find the route that matches the current path or a wildcard route
+  const route = 
+    // Search for a route that matches the current path
+    routes.find((route) => {
+      // Split the route path and current path into segments
+      const routeSegments = route.path.split("/").filter(Boolean); // filter(Boolean) removes empty strings
+      console.log("🚀 ~ routes.find ~ routeSegments:", routeSegments)
+      const pathSegments = currentPath.split("/").filter(Boolean); // filter(Boolean) removes empty strings
+      console.log("🚀 ~ routes.find ~ pathSegments:", pathSegments)
+
+      // If the number of segments doesn't match, this route is not a match
+      if (routeSegments.length !== pathSegments.length) {
+        return false;
+      }
+
+      // Check if each segment matches or is a parameter (starts with ":")
+      return routeSegments.every((segment, index) => {
+        return segment.startsWith(":") || segment === pathSegments[index];
+      });
+    }) 
+    // If no matching route is found, fall back to the wildcard route
+    || routes.find((route) => route.path === "*");
+
+    console.log('route:',route);
 
   content = await route!.page();
 
